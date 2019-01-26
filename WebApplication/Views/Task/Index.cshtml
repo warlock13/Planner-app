@@ -1,0 +1,59 @@
+﻿@model IEnumerable<WebApplication.Models.Task>
+
+@{
+    ViewBag.Title = "Planner App";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Добавить задачу", "Create", null, new { @class = "btn btn-default" })
+</p>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.isActive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.isActual)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr class="entry">
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.isActive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.isActual)
+            </td>
+            <td>
+                @Html.ActionLink(" ", "Edit", new { id = item.ID }, new {@class= "glyphicon glyphicon-edit" })  | 
+                @Html.ActionLink(" ", "Details", new { id = item.ID }, new { @class = "glyphicon glyphicon-eye-open" })  | 
+                @Html.ActionLink(" ", "Delete", new { id = item.ID }, new { @class = "glyphicon glyphicon-trash" })
+            </td>
+        </tr>
+    }
+
+</table>
