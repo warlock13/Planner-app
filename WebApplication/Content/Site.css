@@ -23,6 +23,19 @@ textarea {
     max-width: 280px;
 }
 
-.entry:hover {
-    background-color: aliceblue;
+
+.actual {
+    background-color: rgba(40, 130, 0, 0.15);
+}
+
+.actual:hover {
+    background-color: rgba(40, 130, 0, 0.05);
+}
+
+.overdue {
+    background-color: rgba(140, 0, 0, 0.15);
+}
+
+.overdue:hover {
+    background-color: rgba(140, 0, 0, 0.05);
 }

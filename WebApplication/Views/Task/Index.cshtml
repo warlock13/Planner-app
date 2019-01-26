@@ -10,7 +10,7 @@
     @Html.ActionLink("Добавить задачу", "Create", null, new { @class = "btn btn-default" })
 </p>
 </p>
-<table class="table">
+<table class="table" runat="server">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Name)
@@ -32,7 +32,7 @@
 
     @foreach (var item in Model)
     {
-        <tr class="entry">
+        <tr class="entry @(item.isActual ? "actual" : "overdue")">
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>

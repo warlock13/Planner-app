@@ -16,10 +16,6 @@ namespace WebApplication.Controllers
     {
         private PlannerContext db = new PlannerContext();
 
-        /// <summary>
-        /// date validete
-        /// </summary>
-        /// <returns></returns>
 
         // GET: Task
         public ActionResult Index()
