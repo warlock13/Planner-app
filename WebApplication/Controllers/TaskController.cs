@@ -38,6 +38,20 @@ namespace WebApplication.Controllers
             return View(task);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Details([Bind(Include = "isActive")] Task task)
+        {
+            if (ModelState.IsValid)
+            {
+                //task.isActual = (DateTime.Now.Date <= task.Date) ? true : false;
+                db.Entry(task).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(task);
+        }
+
         // GET: Task/Create
         public ActionResult Create()
         {

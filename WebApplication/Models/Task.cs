@@ -17,7 +17,7 @@ namespace WebApplication.Models
         [DataType(DataType.MultilineText)]
         public string Description { get; set; }
         [DisplayName("Дата выполнения")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         public DateTime Date { get; set; }
         [DisplayName("Закрепить")]
         public Boolean isActive { get; set; }

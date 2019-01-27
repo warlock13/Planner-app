@@ -32,12 +32,29 @@
 
         <dd>
             @Html.DisplayFor(model => model.Date)
+            @if (!Model.isActual) {<span>(просрочено)</span>}
         </dd>
 
     </dl>
 
 </div>
+<br />
 <p>
+    @Html.HiddenFor(model => model.isActive, new { @id = "delegateIsActive" })
     @Html.ActionLink("Назад", "Index", null, new { @class = "btn btn-default" })
+    <!--@Html.EditorFor(model => model.isActive)-->
+    @if (Model.isActive)
+    {
+        //@Html.ActionLink("Открепить", "Index", null, new { @class = "btn btn-info" }, new { onclick = "test" })
+        //<button onclick="test()">test</button>
+        //@Html.EditorFor(model => model.isActual)
+
+    }
+    else
+    {
+        //@Html.ActionLink("Закрепить", "Index", null, new { @class = "btn btn-info" })
+    }
+
+    @Html.ActionLink("Удалить", "Delete", new { id = Model.ID }, new { @class = "btn btn-danger" })
     @Html.ActionLink("Изменить", "Edit", new { id = Model.ID }, new { @class = "btn btn-warning" })
 </p>
