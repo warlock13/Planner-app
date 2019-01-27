@@ -51,9 +51,9 @@ namespace WebApplication.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,Name,Description,Date,isActive")] Task task)
         {
-            task.isActual = (DateTime.Now <= task.Date) ? true : false;
             if (ModelState.IsValid)
             {
+                task.isActual = (DateTime.Now <= task.Date) ? true : false;
                 db.Tasks.Add(task);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -82,10 +82,11 @@ namespace WebApplication.Controllers
         // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,Description,Date,isActive,isActual")] Task task)
+        public ActionResult Edit([Bind(Include = "ID,Name,Description,Date,isActive")] Task task)
         {
             if (ModelState.IsValid)
             {
+                task.isActual = (DateTime.Now <= task.Date) ? true : false;
                 db.Entry(task).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

@@ -10,50 +10,35 @@
     @Html.ActionLink("Добавить задачу", "Create", null, new { @class = "btn btn-default" })
 </p>
 </p>
-<table class="table" runat="server">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.isActive)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.isActual)
-        </th>
-        <th></th>
-    </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr class="entry @(item.isActual ? "actual" : "overdue")">
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.isActive)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.isActual)
-            </td>
-            <td>
-                @Html.ActionLink(" ", "Edit", new { id = item.ID }, new {@class= "glyphicon glyphicon-edit" })  | 
-                @Html.ActionLink(" ", "Details", new { id = item.ID }, new { @class = "glyphicon glyphicon-eye-open" })  | 
-                @Html.ActionLink(" ", "Delete", new { id = item.ID }, new { @class = "glyphicon glyphicon-trash" })
-            </td>
-        </tr>
-    }
 
-</table>
+
+<div class="body-content" runat="server">
+        @foreach (var item in Model)
+        {
+            <div class="entry @(item.isActual ? "actual" : "overdue")">
+                <div class="head">
+                    <div class="active">
+                        @Html.DisplayFor(modelItem => item.isActive)
+                    </div>
+                    <div class="name">
+                        <span class="title">@Html.DisplayFor(modelItem => item.Name)</span>
+                    </div>
+                    <div class="date">
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </div>
+                    <div class="ctrl">
+                        @Html.ActionLink(" ", "Edit", new { id = item.ID }, new { @class = "glyphicon glyphicon-edit" })
+                        @Html.ActionLink(" ", "Details", new { id = item.ID }, new { @class = "glyphicon glyphicon-eye-open" })
+                        @Html.ActionLink(" ", "Delete", new { id = item.ID }, new { @class = "glyphicon glyphicon-trash" })
+                    </div>
+                </div>
+                <div class="description">
+                    @Html.DisplayFor(modelItem => item.Description)
+                </div>
+            </div>
+
+
+        }
+
+</div>
