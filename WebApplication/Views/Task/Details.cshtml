@@ -1,13 +1,13 @@
 ﻿@model WebApplication.Models.Task
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = @Html.DisplayFor(model => model.Name);
 }
 
-<h2>Details</h2>
+<h2>Подробнее</h2>
 
 <div>
-    <h4>Task</h4>
+    <h4></h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -32,22 +32,6 @@
 
         <dd>
             @Html.DisplayFor(model => model.Date)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.isActive)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.isActive)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.isActual)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.isActual)
         </dd>
 
     </dl>
