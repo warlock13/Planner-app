@@ -3,9 +3,7 @@
 @{
     ViewBag.Title = "Planner App";
 }
-
-<h2>Index</h2>
-
+<br/>
 <p>
     @Html.ActionLink("Добавить задачу", "Create", null, new { @class = "btn btn-default" })
 </p>
@@ -14,13 +12,14 @@
 
 
 <div class="body-content" runat="server">
-        @foreach (var item in Model)
+
+    <h4>Закрепленные:</h4><br />
+    @foreach (var item in Model)
+    {
+        if (item.isActive)
         {
             <div class="entry @(item.isActual ? "actual" : "overdue")">
                 <div class="head">
-                    <div class="active">
-                        @Html.DisplayFor(modelItem => item.isActive)
-                    </div>
                     <div class="name">
                         <span class="title">@Html.DisplayFor(modelItem => item.Name)</span>
                     </div>
@@ -37,8 +36,35 @@
                     @Html.DisplayFor(modelItem => item.Description)
                 </div>
             </div>
-
-
         }
+    }
+    <br />
+
+    <h4>Другие заметки:</h4><br />
+    @foreach (var item in Model)
+    {
+        if (!item.isActive)
+        {
+            <div class="entry @(item.isActual ? "actual" : "overdue")">
+                <div class="head">
+                    <div class="name">
+                        <span class="title">@Html.DisplayFor(modelItem => item.Name)</span>
+                    </div>
+                    <div class="date">
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </div>
+                    <div class="ctrl">
+                        @Html.ActionLink(" ", "Edit", new { id = item.ID }, new { @class = "glyphicon glyphicon-edit" })
+                        @Html.ActionLink(" ", "Details", new { id = item.ID }, new { @class = "glyphicon glyphicon-eye-open" })
+                        @Html.ActionLink(" ", "Delete", new { id = item.ID }, new { @class = "glyphicon glyphicon-trash" })
+                    </div>
+                </div>
+                <div class="description">
+                    @Html.DisplayFor(modelItem => item.Description)
+                </div>
+            </div>
+        }
+
+    }
 
 </div>
