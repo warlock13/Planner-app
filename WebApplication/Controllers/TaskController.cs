@@ -53,7 +53,7 @@ namespace WebApplication.Controllers
         {
             if (ModelState.IsValid)
             {
-                task.isActual = (DateTime.Now <= task.Date) ? true : false;
+                task.isActual = (DateTime.Now.Date <= task.Date) ? true : false;
                 db.Tasks.Add(task);
                 db.SaveChanges();
                 return RedirectToAction("Index");
