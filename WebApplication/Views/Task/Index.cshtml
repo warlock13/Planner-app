@@ -4,20 +4,22 @@
     ViewBag.Title = "Planner App";
 }
 <br/>
-<p>
-    @Html.ActionLink("Добавить задачу", "Create", null, new { @class = "btn btn-default" })
-</p>
-</p>
 
 
 
 <div class="body-content" runat="server">
+    <div class="add_btn">
+        @Html.ActionLink("Добавить задачу", "Create", null, new { @class = "btn btn-default btn-lg btn-block" })
+    </div>
+    <br />
 
-    <h4>Закрепленные:</h4><br />
+    <h4>Закрепленные</h4>
+    @{ var i = 0; }
     @foreach (var item in Model)
     {
         if (item.isActive)
         {
+            i++;
             <div class="entry @(item.isActual ? "actual" : "overdue")">
                 <div class="head">
                     <div class="name">
@@ -38,9 +40,11 @@
             </div>
         }
     }
+    @if (i == 0)
+    {<span class="info_message">Нет закрепленных задач</span>}
     <br />
 
-    <h4>Другие заметки:</h4><br />
+    <h4>Другие заметки</h4>
     @foreach (var item in Model)
     {
         if (!item.isActive)
@@ -66,5 +70,6 @@
         }
 
     }
+
 
 </div>
