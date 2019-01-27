@@ -64,6 +64,10 @@ textarea {
     border-style: solid;
 }
 
+    .entry:hover {
+        border-color: rgba(56, 56, 56, 0.6);
+    }
+
 .info_message {
     display: block;
     margin-left: 25%;

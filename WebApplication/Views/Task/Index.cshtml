@@ -20,7 +20,7 @@
         if (item.isActive)
         {
             i++;
-            <div class="entry @(item.isActual ? "actual" : "overdue")">
+            <div class="entry @(item.isActual ? "actual" : "overdue")" id="@item.ID" onclick="show_task(@item.ID)">
                 <div class="head">
                     <div class="name">
                         <span class="title">@Html.DisplayFor(modelItem => item.Name)</span>
@@ -49,7 +49,7 @@
     {
         if (!item.isActive)
         {
-            <div class="entry @(item.isActual ? "actual" : "overdue")">
+            <div class="entry @(item.isActual ? "actual" : "overdue")" id="@item.ID" onclick="show_task(@item.ID)">
                 <div class="head">
                     <div class="name">
                         <span class="title">@Html.DisplayFor(modelItem => item.Name)</span>
