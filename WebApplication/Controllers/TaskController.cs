@@ -16,6 +16,10 @@ namespace WebApplication.Controllers
     {
         private PlannerContext db = new PlannerContext();
 
+        public ActionResult ModalPopUp()
+        {
+            return View();
+        }
 
         // GET: Task
         public ActionResult Index()

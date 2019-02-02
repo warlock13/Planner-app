@@ -6,11 +6,9 @@
     else {
         host = host.replace("Index", "Details/" + text);
     }
-    //alert(host);
     window.location.href = host;
-
 }
 
-function test() {
-    alert("tested");
-}
+
+
+
